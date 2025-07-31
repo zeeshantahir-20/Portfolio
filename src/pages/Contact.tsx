@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { motion } from 'framer-motion';
@@ -13,17 +15,17 @@ interface ContactFormData {
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  
-  const { 
-    register, 
-    handleSubmit, 
+
+  const {
+    register,
+    handleSubmit,
     reset,
-    formState: { errors } 
+    formState: { errors }
   } = useForm<ContactFormData>();
-  
+
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
-    
+
     try {
       const { error } = await supabase
         .from('contacts')
@@ -31,12 +33,12 @@ const Contact = () => {
           {
             name: data.name,
             email: data.email,
-            message: data.message,
+            message: data.message
           }
         ]);
-        
+
       if (error) throw error;
-      
+
       toast.success('Message sent successfully!');
       reset();
     } catch (error) {
@@ -46,7 +48,7 @@ const Contact = () => {
       setIsSubmitting(false);
     }
   };
-  
+
   return (
     <div className="py-32 md:py-40">
       <div className="container mx-auto px-4 md:px-6">
@@ -64,7 +66,7 @@ const Contact = () => {
               <p className="text-lg text-gray-700 dark:text-gray-300 mb-8 max-w-md">
                 Ready to start your next project? Have questions about my services? Feel free to reach out and I'll get back to you as soon as possible.
               </p>
-              
+
               <div className="space-y-6 mb-8">
                 <div className="flex items-start">
                   <div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
@@ -74,15 +76,15 @@ const Contact = () => {
                     <h3 className="font-medium text-gray-900 dark:text-white mb-1">
                       Email
                     </h3>
-                    <a 
-                      href="mailto:contact@example.com" 
+                    <a
+                      href="mailto:zeeshantahir0221@gmail.com"
                       className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
                     >
                       zeeshantahir0221@gmail.com
                     </a>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start">
                   <div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
                     <Phone size={20} />
@@ -91,15 +93,15 @@ const Contact = () => {
                     <h3 className="font-medium text-gray-900 dark:text-white mb-1">
                       Phone
                     </h3>
-                    <a 
-                      href="tel:+1234567890" 
+                    <a
+                      href="tel:+923105463726"
                       className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
                     >
                       +92 (310) 5463726
                     </a>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start">
                   <div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
                     <MapPin size={20} />
@@ -114,7 +116,7 @@ const Contact = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mb-8">
                 <h3 className="font-display text-xl font-bold text-gray-900 dark:text-white mb-4">
                   Working Hours
@@ -135,7 +137,7 @@ const Contact = () => {
                 </div>
               </div>
             </motion.div>
-            
+
             {/* Contact Form */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
@@ -148,47 +150,33 @@ const Contact = () => {
               </h2>
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                 <div>
-                  <label 
-                    htmlFor="name" 
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
-                  >
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                     Name
                   </label>
                   <input
                     id="name"
                     type="text"
                     className={`w-full px-4 py-3 rounded-lg border ${
-                      errors.name 
-                        ? 'border-red-500 dark:border-red-400' 
-                        : 'border-gray-300 dark:border-gray-700'
+                      errors.name ? 'border-red-500 dark:border-red-400' : 'border-gray-300 dark:border-gray-700'
                     } bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500`}
                     placeholder="Your name"
                     {...register('name', { required: 'Name is required' })}
                   />
-                  {errors.name && (
-                    <p className="mt-1 text-sm text-red-500 dark:text-red-400">
-                      {errors.name.message}
-                    </p>
-                  )}
+                  {errors.name && <p className="mt-1 text-sm text-red-500 dark:text-red-400">{errors.name.message}</p>}
                 </div>
-                
+
                 <div>
-                  <label 
-                    htmlFor="email" 
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
-                  >
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                     Email
                   </label>
                   <input
                     id="email"
                     type="email"
                     className={`w-full px-4 py-3 rounded-lg border ${
-                      errors.email 
-                        ? 'border-red-500 dark:border-red-400' 
-                        : 'border-gray-300 dark:border-gray-700'
+                      errors.email ? 'border-red-500 dark:border-red-400' : 'border-gray-300 dark:border-gray-700'
                     } bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500`}
                     placeholder="Your email"
-                    {...register('email', { 
+                    {...register('email', {
                       required: 'Email is required',
                       pattern: {
                         value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
@@ -196,38 +184,25 @@ const Contact = () => {
                       }
                     })}
                   />
-                  {errors.email && (
-                    <p className="mt-1 text-sm text-red-500 dark:text-red-400">
-                      {errors.email.message}
-                    </p>
-                  )}
+                  {errors.email && <p className="mt-1 text-sm text-red-500 dark:text-red-400">{errors.email.message}</p>}
                 </div>
-                
+
                 <div>
-                  <label 
-                    htmlFor="message" 
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
-                  >
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                     Message
                   </label>
                   <textarea
                     id="message"
                     rows={6}
                     className={`w-full px-4 py-3 rounded-lg border ${
-                      errors.message 
-                        ? 'border-red-500 dark:border-red-400' 
-                        : 'border-gray-300 dark:border-gray-700'
+                      errors.message ? 'border-red-500 dark:border-red-400' : 'border-gray-300 dark:border-gray-700'
                     } bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500 resize-none`}
                     placeholder="Your message"
                     {...register('message', { required: 'Message is required' })}
                   ></textarea>
-                  {errors.message && (
-                    <p className="mt-1 text-sm text-red-500 dark:text-red-400">
-                      {errors.message.message}
-                    </p>
-                  )}
+                  {errors.message && <p className="mt-1 text-sm text-red-500 dark:text-red-400">{errors.message.message}</p>}
                 </div>
-                
+
                 <button
                   type="submit"
                   disabled={isSubmitting}

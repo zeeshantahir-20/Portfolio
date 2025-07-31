@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { ChevronRight, ExternalLink, Github, Code, Briefcase, Star } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import type { Project, Service, Testimonial } from '../lib/supabase';
-import myimage from './Images/zeeshan.jpg';
+import myimage from './Images/zeeshantahir.jpg'
 const Home = () => {
   const [featuredProjects, setFeaturedProjects] = useState<Project[]>([]);
   const [featuredServices, setFeaturedServices] = useState<Service[]>([]);
@@ -72,7 +72,7 @@ const Home = () => {
               <img 
              src={myimage} 
                 alt="Profile" 
-                className="w-24 h-24 rounded-full mx-auto mb-6 object-cover border-4 border-white dark:border-gray-800 shadow-lg"
+                className="w-48 h-48 rounded-full mx-auto mb-6 object-cover border-4 border-white dark:border-gray-800 shadow-lg"
               />
               <h1 className="font-display text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
                 Muhammad Zeeshan Tahir

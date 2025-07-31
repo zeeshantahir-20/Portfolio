@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Download, Calendar } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import type { WorkExperience } from '../lib/supabase';
-import myimage from './Images/zeeshan.jpg';
+import myimage from './Images/zeeshantahir.jpg';
 import resume from './Images/zeeshan.pdf';
 
 const About = () => {
