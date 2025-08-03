@@ -72,7 +72,7 @@ const Home = () => {
               <img 
              src={myimage} 
                 alt="Profile" 
-                className="w-24 h-24 rounded-full mx-auto mb-6 object-cover border-4 border-white dark:border-gray-800 shadow-lg"
+                className="w-40 h-40 rounded-full mx-auto mb-6 object-cover border-4 border-white dark:border-gray-800 shadow-lg"
               />
               <h1 className="font-display text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
                 Muhammad Zeeshan Tahir

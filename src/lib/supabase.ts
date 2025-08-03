@@ -12,4 +12,8 @@ export type Service = Tables['services']['Row'];
 export type Testimonial = Tables['testimonials']['Row'];
 export type Experience = Tables['experiences']['Row'];
 export type Contact = Tables['contacts']['Row'];
+
+
+
+
 export type WorkExperience = Tables['work_experiences']['Row'];
